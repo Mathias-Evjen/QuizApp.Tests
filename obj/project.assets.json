@@ -12560,19 +12560,19 @@
     ]
   },
   "packageFolders": {
-    "/home/mathias/.nuget/packages/": {}
+    "C:\\Users\\Mathias\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/mathias/Documents/Programmering/QuizApp.Tests/QuizApp.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\Mathias\\Documents\\GitHub\\QuizApp.Tests\\QuizApp.Tests.csproj",
       "projectName": "QuizApp.Tests",
-      "projectPath": "/home/mathias/Documents/Programmering/QuizApp.Tests/QuizApp.Tests.csproj",
-      "packagesPath": "/home/mathias/.nuget/packages/",
-      "outputPath": "/home/mathias/Documents/Programmering/QuizApp.Tests/obj/",
+      "projectPath": "C:\\Users\\Mathias\\Documents\\GitHub\\QuizApp.Tests\\QuizApp.Tests.csproj",
+      "packagesPath": "C:\\Users\\Mathias\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Mathias\\Documents\\GitHub\\QuizApp.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/mathias/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Mathias\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -12584,8 +12584,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "/home/mathias/Documents/Programmering/QuizApp/QuizApp.csproj": {
-              "projectPath": "/home/mathias/Documents/Programmering/QuizApp/QuizApp.csproj"
+            "c:\\Users\\Mathias\\Documents\\GitHub\\QuizApp\\QuizApp.csproj": {
+              "projectPath": "c:\\Users\\Mathias\\Documents\\GitHub\\QuizApp\\QuizApp.csproj"
             }
           }
         }
@@ -12594,6 +12594,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -12640,18 +12645,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[8.0.20, 8.0.20]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.120/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.414/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

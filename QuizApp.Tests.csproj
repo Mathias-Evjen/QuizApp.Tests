@@ -29,7 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
-	  <ProjectReference Include="../QuizApp/QuizApp.csproj" />
+	  <ProjectReference Include="..\QuizApp\QuizApp.csproj" />
   </ItemGroup>
 
 </Project>

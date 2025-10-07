@@ -2880,7 +2880,7 @@
         "runtime": {
           "lib/netstandard2.0/xunit.abstractions.dll": {
             "assemblyVersion": "2.0.0.0",
-            "fileVersion": "0.0.0.0"
+            "fileVersion": "2.0.0.0"
           }
         }
       },
@@ -2939,7 +2939,10 @@
           "Serilog.Sinks.File": "7.0.0"
         },
         "runtime": {
-          "QuizApp.dll": {}
+          "QuizApp.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }
