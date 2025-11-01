@@ -285,6 +285,48 @@ public class FlashCardControllerTests
     }
 
     [Fact]
+    public async Task TestEditIdNotEqual()
+    {
+        // arrange
+        var mockFlashCard = new FlashCard
+        {
+            FlashCardId = 2,
+            Question = "What is the capital of Sweden?",
+            Answer = "Stockholm",
+            QuizId = 1,
+            QuizQuestionNum = 2
+        };
+        var mockFlashCardDto = new FlashCardDto
+        {
+            FlashCardId = 1,
+            Question = "What is the capital of Norway?",
+            Answer = "Oslo",
+            QuizId = 1,
+            QuizQuestionNum = 1
+        };
+
+        int mockFlashCardId = 2;
+
+        var mockFlashCardRepository = new Mock<IQuestionRepository<FlashCard>>();
+        mockFlashCardRepository.Setup(repo => repo.Update(It.IsAny<FlashCard>())).ReturnsAsync(true);
+        mockFlashCardRepository.Setup(repo => repo.GetById(mockFlashCardId)).ReturnsAsync(mockFlashCard);
+        var mockSerivce = new Mock<IFlashCardQuizService>();
+        var mockLogger = new Mock<ILogger<FlashCardAPIController>>();
+        var flashCardController = new FlashCardAPIController(
+            mockFlashCardRepository.Object,
+            mockSerivce.Object,
+            mockLogger.Object);
+
+        // act
+        var result = await flashCardController.Edit(mockFlashCardId, mockFlashCardDto);
+
+        // assert
+        var objectResult = Assert.IsType<ObjectResult>(result);
+        Assert.Equal(500, objectResult.StatusCode);
+        Assert.Equal("Internal server error", objectResult.Value);
+    }
+
+    [Fact]
     public async Task TestDelete()
     {
         int mockFlashCardId = 1;
