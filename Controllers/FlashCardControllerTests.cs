@@ -159,6 +159,132 @@ public class FlashCardControllerTests
     }
 
     [Fact]
+    public async Task TestEditDtoIsNull()
+    {
+        // arrange
+        var mockFlashCard = new FlashCard
+        {
+            FlashCardId = 1,
+            Question = "What is the capital of Norway?",
+            Answer = "Oslo",
+            QuizId = 1,
+            QuizQuestionNum = 1
+        };
+        var mockFlashCardDto = new FlashCardDto
+        {
+            FlashCardId = 1,
+            Question = "What is the capital of Norway?",
+            Answer = "Oslo",
+            QuizId = 1,
+            QuizQuestionNum = 1
+        };
+
+        int mockFlashCardId = 1;
+
+        var mockFlashCardRepository = new Mock<IQuestionRepository<FlashCard>>();
+        mockFlashCardRepository.Setup(repo => repo.Update(It.IsAny<FlashCard>())).ReturnsAsync(true);
+        mockFlashCardRepository.Setup(repo => repo.GetById(mockFlashCardId)).ReturnsAsync(mockFlashCard);
+        var mockSerivce = new Mock<IFlashCardQuizService>();
+        var mockLogger = new Mock<ILogger<FlashCardAPIController>>();
+        var flashCardController = new FlashCardAPIController(
+            mockFlashCardRepository.Object,
+            mockSerivce.Object,
+            mockLogger.Object);
+
+        // act
+        var result = await flashCardController.Edit(mockFlashCardId, null);
+
+        // assert
+        var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
+        Assert.Equal(400, badRequestResult.StatusCode);
+        Assert.Equal("Flash card cannot be null", badRequestResult.Value);
+    }
+
+    [Fact]
+    public async Task TestEditExistingIsNull()
+    {
+        // arrange
+        var mockFlashCard = new FlashCard
+        {
+            FlashCardId = 1,
+            Question = "What is the capital of Norway?",
+            Answer = "Oslo",
+            QuizId = 1,
+            QuizQuestionNum = 1
+        };
+        var mockFlashCardDto = new FlashCardDto
+        {
+            FlashCardId = 1,
+            Question = "What is the capital of Norway?",
+            Answer = "Oslo",
+            QuizId = 1,
+            QuizQuestionNum = 1
+        };
+
+        int mockFlashCardId = 1;
+
+        var mockFlashCardRepository = new Mock<IQuestionRepository<FlashCard>>();
+        mockFlashCardRepository.Setup(repo => repo.Update(It.IsAny<FlashCard>())).ReturnsAsync(true);
+        mockFlashCardRepository.Setup(repo => repo.GetById(mockFlashCardId)).ReturnsAsync((FlashCard?)null);
+        var mockSerivce = new Mock<IFlashCardQuizService>();
+        var mockLogger = new Mock<ILogger<FlashCardAPIController>>();
+        var flashCardController = new FlashCardAPIController(
+            mockFlashCardRepository.Object,
+            mockSerivce.Object,
+            mockLogger.Object);
+
+        // act
+        var result = await flashCardController.Edit(mockFlashCardId, mockFlashCardDto);
+
+        // assert
+        var notFoundResult = Assert.IsType<NotFoundObjectResult>(result);
+        Assert.Equal(404, notFoundResult.StatusCode);
+        Assert.Equal("FlashCard not found for the FlashCardId", notFoundResult.Value);
+    }
+
+    [Fact]
+    public async Task TestEditUpdateFailed()
+    {
+        // arrange
+        var mockFlashCard = new FlashCard
+        {
+            FlashCardId = 1,
+            Question = "What is the capital of Norway?",
+            Answer = "Oslo",
+            QuizId = 1,
+            QuizQuestionNum = 1
+        };
+        var mockFlashCardDto = new FlashCardDto
+        {
+            FlashCardId = 1,
+            Question = "What is the capital of Norway?",
+            Answer = "Oslo",
+            QuizId = 1,
+            QuizQuestionNum = 1
+        };
+
+        int mockFlashCardId = 1;
+
+        var mockFlashCardRepository = new Mock<IQuestionRepository<FlashCard>>();
+        mockFlashCardRepository.Setup(repo => repo.Update(It.IsAny<FlashCard>())).ReturnsAsync(false);
+        mockFlashCardRepository.Setup(repo => repo.GetById(mockFlashCardId)).ReturnsAsync(mockFlashCard);
+        var mockSerivce = new Mock<IFlashCardQuizService>();
+        var mockLogger = new Mock<ILogger<FlashCardAPIController>>();
+        var flashCardController = new FlashCardAPIController(
+            mockFlashCardRepository.Object,
+            mockSerivce.Object,
+            mockLogger.Object);
+
+        // act
+        var result = await flashCardController.Edit(mockFlashCardId, mockFlashCardDto);
+
+        // assert
+        var objectResult = Assert.IsType<ObjectResult>(result);
+        Assert.Equal(500, objectResult.StatusCode);
+        Assert.Equal("Internal server error", objectResult.Value);
+    }
+
+    [Fact]
     public async Task TestDelete()
     {
         int mockFlashCardId = 1;
@@ -179,5 +305,31 @@ public class FlashCardControllerTests
 
         // assert
         var noContentResult = Assert.IsType<NoContentResult>(result);
+        Assert.Equal(204, noContentResult.StatusCode);
+    }
+
+    [Fact]
+    public async Task TestDeleteFailed()
+    {
+        int mockFlashCardId = 1;
+        int mockQNum = 1;
+        int mockQuizId = 1;
+
+        var mockFlashCardRepository = new Mock<IQuestionRepository<FlashCard>>();
+        mockFlashCardRepository.Setup(repo => repo.Delete(mockFlashCardId)).ReturnsAsync(false);
+        var mockSerivce = new Mock<IFlashCardQuizService>();
+        var mockLogger = new Mock<ILogger<FlashCardAPIController>>();
+        var flashCardController = new FlashCardAPIController(
+            mockFlashCardRepository.Object,
+            mockSerivce.Object,
+            mockLogger.Object);
+
+        // act
+        var result = await flashCardController.Delete(mockFlashCardId, mockQNum, mockQuizId);
+
+        // assert
+        var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
+        Assert.Equal(400, badRequestResult.StatusCode);
+        Assert.Equal("FlashCard deletion failed", badRequestResult.Value);
     }
 }
