@@ -1,6 +1,5 @@
 {
-  "dependencies": {
-    "bootstrap": "^5.3.8",
-    "jquery": "^3.7.1"
+  "devDependencies": {
+    "wait-on": "^9.0.1"
   }
 }

@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentAssertions" Version="8.8.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.0" />
     <PackageReference Include="Moq" Version="4.20.72" />
     <PackageReference Include="Moq.EntityFrameworkCore" Version="9.0.0.5" />
@@ -29,7 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-	  <ProjectReference Include="..\QuizApp\QuizApp.csproj" />
+	  <ProjectReference Include="..\QuizApp\api\api.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Mathias\\Documents\\GitHub\\QuizApp.Tests\\QuizApp.Tests.csproj": {}
+    "C:\\Users\\Mathias\\Programmering\\QuizApp.Tests\\QuizApp.Tests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Mathias\\Documents\\GitHub\\QuizApp.Tests\\QuizApp.Tests.csproj": {
+    "C:\\Users\\Mathias\\Programmering\\QuizApp.Tests\\QuizApp.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Mathias\\Documents\\GitHub\\QuizApp.Tests\\QuizApp.Tests.csproj",
+        "projectUniqueName": "C:\\Users\\Mathias\\Programmering\\QuizApp.Tests\\QuizApp.Tests.csproj",
         "projectName": "QuizApp.Tests",
-        "projectPath": "C:\\Users\\Mathias\\Documents\\GitHub\\QuizApp.Tests\\QuizApp.Tests.csproj",
+        "projectPath": "C:\\Users\\Mathias\\Programmering\\QuizApp.Tests\\QuizApp.Tests.csproj",
         "packagesPath": "C:\\Users\\Mathias\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Mathias\\Documents\\GitHub\\QuizApp.Tests\\obj\\",
+        "outputPath": "C:\\Users\\Mathias\\Programmering\\QuizApp.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Mathias\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -26,8 +26,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "c:\\Users\\Mathias\\Documents\\GitHub\\QuizApp\\QuizApp.csproj": {
-                "projectPath": "c:\\Users\\Mathias\\Documents\\GitHub\\QuizApp\\QuizApp.csproj"
+              "c:\\Users\\Mathias\\Programmering\\QuizApp\\api\\api.csproj": {
+                "projectPath": "c:\\Users\\Mathias\\Programmering\\QuizApp\\api\\api.csproj"
               }
             }
           }
@@ -47,6 +47,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "FluentAssertions": {
+              "target": "Package",
+              "version": "[8.8.0, )"
+            },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[17.6.0, )"
@@ -96,14 +100,14 @@
         }
       }
     },
-    "c:\\Users\\Mathias\\Documents\\GitHub\\QuizApp\\QuizApp.csproj": {
+    "c:\\Users\\Mathias\\Programmering\\QuizApp\\api\\api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Mathias\\Documents\\GitHub\\QuizApp\\QuizApp.csproj",
-        "projectName": "QuizApp",
-        "projectPath": "c:\\Users\\Mathias\\Documents\\GitHub\\QuizApp\\QuizApp.csproj",
+        "projectUniqueName": "c:\\Users\\Mathias\\Programmering\\QuizApp\\api\\api.csproj",
+        "projectName": "api",
+        "projectPath": "c:\\Users\\Mathias\\Programmering\\QuizApp\\api\\api.csproj",
         "packagesPath": "C:\\Users\\Mathias\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Mathias\\Documents\\GitHub\\QuizApp\\obj\\",
+        "outputPath": "c:\\Users\\Mathias\\Programmering\\QuizApp\\api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Mathias\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -143,6 +147,14 @@
               "target": "Package",
               "version": "[8.*, )"
             },
+            "Microsoft.AspNetCore.Mvc.NewtonSoftJson": {
+              "target": "Package",
+              "version": "[8.*, )"
+            },
+            "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[8.0.20, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -163,10 +175,6 @@
               "target": "Package",
               "version": "[8.*, )"
             },
-            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
-              "target": "Package",
-              "version": "[8.*, )"
-            },
             "Serilog.Extensions.Logging": {
               "target": "Package",
               "version": "[9.0.2, )"
@@ -178,6 +186,10 @@
             "Serilog.Sinks.File": {
               "target": "Package",
               "version": "[7.0.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.6.2, )"
             }
           },
           "imports": [
